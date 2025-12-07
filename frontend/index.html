@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyGiftHub - Christmas Wishlist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>🎄 FamilyGiftHub</h1>
+            <nav id="mainNav" style="display: none;">
+                <button class="nav-btn" data-section="home">Home</button>
+                <button class="nav-btn" data-section="myList">My List</button>
+                <button class="nav-btn" data-section="familyLists">Family Lists</button>
+                <button class="nav-btn" data-section="giftIdeas">Gift Ideas</button>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="loginSection" class="section active">
+            <div class="login-card">
+                <h2>Welcome to FamilyGiftHub</h2>
+                <p>Create a new family or join an existing one</p>
+
+                <div class="tab-buttons">
+                    <button id="joinTab" class="tab-btn active">Join Family</button>
+                    <button id="createTab" class="tab-btn">Create Family</button>
+                </div>
+
+                <form id="joinForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Family Code</label>
+                        <input type="text" id="joinFamilyCode" required placeholder="Enter family code">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Display Name</label>
+                        <input type="text" id="joinDisplayName" required placeholder="Enter your name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Join Family</button>
+                </form>
+
+                <form id="createForm" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label>Family Name</label>
+                        <input type="text" id="createFamilyName" required placeholder="e.g., Smith Family">
+                    </div>
+                    <div class="form-group">
+                        <label>Your Display Name</label>
+                        <input type="text" id="createDisplayName" required placeholder="Enter your name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Family</button>
+                </form>
+
+                <div id="authError" class="error-message"></div>
+            </div>
+        </section>
+
+        <section id="homeSection" class="section">
+            <div class="welcome-card">
+                <h2>Welcome, <span id="userName"></span>! 🎅</h2>
+                <p>Family: <strong id="familyName"></strong></p>
+                <p>Family Code: <strong id="familyCode"></strong></p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3 id="myGiftsCount">0</h3>
+                        <p>My Gifts</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="familyMembersCount">0</h3>
+                        <p>Family Members</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="reservedCount">0</h3>
+                        <p>Reserved by Me</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="myListSection" class="section">
+            <h2>My Wishlist</h2>
+
+            <div class="add-gift-card">
+                <h3>Add New Gift</h3>
+                <form id="addGiftForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Gift Title *</label>
+                            <input type="text" id="giftTitle" required placeholder="e.g., Wireless Headphones">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="number" id="giftPrice" step="0.01" placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="giftDescription" rows="3" placeholder="Add details about the gift..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Link (optional)</label>
+                            <input type="url" id="giftLink" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select id="giftPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Gift</button>
+                </form>
+            </div>
+
+            <div id="myGiftsList" class="gifts-grid"></div>
+        </section>
+
+        <section id="familyListsSection" class="section">
+            <h2>Family Wishlists</h2>
+            <div id="familyListsContainer"></div>
+        </section>
+
+        <section id="giftIdeasSection" class="section">
+            <h2>Gift Ideas & Inspiration</h2>
+            <p>Browse popular items for inspiration</p>
+            <button id="loadIdeasBtn" class="btn btn-secondary">Load Gift Ideas</button>
+            <div id="giftIdeasGrid" class="gifts-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 FamilyGiftHub - Making Christmas gift giving easier</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
